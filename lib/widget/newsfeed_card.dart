@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lagto_mobprog/constant.dart';
 import 'package:lagto_mobprog/widget/custom_text.dart';
 
 class NewsfeedCard extends StatelessWidget {

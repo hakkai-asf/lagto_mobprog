@@ -1,78 +1,91 @@
-# Lagto_mobprog
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/NU_wordmark.svg" alt="National University Philippines" width="360">
+</p>
 
-<div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/National_University_Philippines_logo.svg/200px-National_University_Philippines_logo.svg.png" height="80"/>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/National_University_Philippines_logo.svg/200px-National_University_Philippines_logo.svg.png" height="80"/>
+<p align="center">
+  <strong>NATIONAL UNIVERSITY</strong><br>
+  <strong>COLLEGE OF COMPUTING AND INFORMATION TECHNOLOGIES</strong>
+</p>
 
-  <br/>
-
-  **NATIONAL UNIVERSITY**  
-  **COLLEGE OF COMPUTING AND INFORMATION TECHNOLOGIES**
-
-  <br/>
-
-  ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-  ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-</div>
-
----
-
-## 📱 Lab Activity 1: Facebook UI Replication
+# PulseBoard
 
 **Course:** Mobile Programming  
 **Student:** Harry Lagto  
-**Institution:** National University — College of Computing and Information Technologies  
+**Institution:** National University, College of Computing and Information Technologies
 
----
+PulseBoard is a Flutter social-media application developed for the Mobile
+Programming laboratory activities. It contains a dynamic news feed,
+notifications, and a profile screen using a custom navy, peach, and red color
+palette.
 
-## 📋 Discussion
+## Laboratory Activity 1A: Facebook UI Replication
 
-### Laboratory Discussion
-**Discuss how you integrate the Image to the `newsfeed_card.dart` and make it dynamic whether it has image or not.**
+Activity 1A established the original social-media interface and introduced the
+Flutter project structure and reusable widgets needed to reproduce the main
+parts of a Facebook-style news feed.
 
-In `newsfeed_card.dart`, the image is integrated dynamically using two nullable properties: `bool? hasImage` and `String? imageUrl` passed into the `NewsfeedCard` widget.
+Features completed:
 
-The logic works as follows:
+- Facebook-style news feed layout
+- Reusable post-card and custom-text widgets
+- User details, post dates, and engagement values
+- Like, Comment, and Share controls
+- Optional post images and comment fields
+- Responsive sizing through `flutter_screenutil`
 
-- If `hasImage == true`, the widget renders a dedicated `PostImageWidget` which uses `Image.network()` to load the image from the provided `imageUrl`.
-- If `hasImage` is null or false, it renders a `SizedBox.shrink()` which takes up zero space, effectively hiding the image area entirely.
+### Activity 1A Discussion: Dynamic Post Images
 
-Inside `PostImageWidget`, the image is wrapped in a `ClipRRect` for rounded corners and uses `BoxFit.cover` to fill the container properly. A `loadingBuilder` shows a `CircularProgressIndicator` while the image loads, and an `errorBuilder` displays a fallback broken image icon in case the URL fails.
+The post image is controlled by the `hasImage` and `imageUrl` properties of
+`NewsfeedCard`. When `hasImage` is true, the card creates a `PostImageWidget`.
+When it is false, the image section is omitted so it does not occupy layout
+space. `PostImageWidget` loads a supplied network image when available and
+uses `BoxFit.cover` to fill its rounded container. Missing or failed image URLs
+are handled by `errorBuilder`, which displays the built-in post placeholder.
+This keeps the post card reusable for posts with an image, a placeholder, or
+no image.
 
-This approach keeps the `NewsfeedCard` widget fully reusable — posts without images simply omit `hasImage` and `imageUrl`, and the widget handles both cases cleanly without any layout issues.
+## Laboratory Activity 2: Dynamic Posts and Notification Screen Enhancement
 
----
+Activity 2 extends the original interface with data-driven posts,
+notifications, navigation, branding, and a custom visual theme.
 
-## ✅ Enhancements Applied
+Enhancements completed:
 
-| # | Enhancement | Description |
-|---|---|---|
-| 1 | **Post Image Widget** | Created a dedicated `PostImageWidget` class using `Image.network()` with dynamic `imageUrl`, a loading indicator, and an error fallback. |
-| 2 | **Avatar Widget** | Replaced `Icon(Icons.person)` with a `CircleAvatar` widget that accepts an optional `avatarUrl` via `NetworkImage`, falling back to a default grey avatar. |
-| 3 | **Action Button Widgets** | Extracted `LikeButton`, `CommentButton`, and `ShareButton` as separate `StatelessWidget` classes, each accepting an `onPressed` callback for reusability. |
+- Ten posts with different names, dates, content, and engagement values
+- Posts that can show a remote image, a placeholder, or no image
+- Twenty dynamically generated notifications
+- Dynamic app-bar titles for each selected screen
+- Feed, Notifications, and Profile bottom-navigation items
+- Application name changed to PulseBoard
+- Custom palette using `#181A2F`, `#242E49`, `#37415C`, `#FDA481`,
+  `#B4182D`, and `#54162B`
 
----
+### Activity 2 Discussion: Managing Posts and Notifications Efficiently
 
-## 📸 Screenshots
+Posts are represented by immutable data objects stored in a list. A
+`ListView.builder` creates only the visible post cards, avoiding manually
+duplicated widgets and remaining efficient as the feed grows. Notifications
+follow the same approach: a `ListView.separated` builds twenty rows from
+reusable name and description lists. The reusable `NewsfeedCard` and
+`NotificationWidget` components keep the data separate from its presentation.
 
-### Before Enhancement
-> *(Insert before screenshot here)*
+### Activity 2 Discussion: Accomplishments and Challenges
 
-### After Enhancement
-> *(Insert after screenshot here)*
+The project now contains ten data-driven posts, twenty notifications, optional
+post images with a built-in placeholder, a dynamic app-bar title, and an
+expanded bottom navigation bar. The app was renamed and restyled using a
+consistent custom palette. Missing or failed network images are handled by an
+`errorBuilder`, which displays the local placeholder instead of leaving a
+broken image. Shared colors are centralized in `constant.dart`, making the
+theme easier to maintain and apply consistently.
 
----
+## Technologies Used
 
-## 🔗 GitHub Repository
-
-[GitHub Repository Link](https://github.com/yourusername/lagto_mobprog)
-
----
-
-## 🛠️ Tech Stack
-
-- Flutter 3.x
+- Flutter
 - Dart
-- flutter_screenutil
 - Material Design
+- `flutter_screenutil`
+
+## Repository
+
+[GitHub repository](https://github.com/hakkai-asf/lagto_mobprog)

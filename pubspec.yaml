@@ -21,3 +21,10 @@ flutter:
     - assets/icons/
     - assets/images/
   uses-material-design: true
+  fonts:
+    - family: Klavika
+      fonts:
+        - asset: assets/fonts/Klavika-Regular.ttf
+    - family: Frutiger
+      fonts:
+        - asset: assets/fonts/FrutigerLSTD-Roman.ttf

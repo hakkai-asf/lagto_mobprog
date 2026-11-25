@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lagto_mobprog/screens/home_screen.dart';
 import 'package:lagto_mobprog/screens/newsfeed_screen.dart';
+import 'package:lagto_mobprog/constant.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,7 +20,18 @@ class MainApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Facebook Replication',
+          title: 'PulseBoard',
+          theme: ThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: appBackground,
+            colorScheme: const ColorScheme.dark(
+              primary: appPrimary,
+              secondary: appAccent,
+              surface: appSurface,
+            ),
+            dividerColor: appSurfaceLight,
+            useMaterial3: true,
+          ),
           initialRoute: '/home',
           routes: {
             '/newsfeed': (context) => const NewsfeedScreen(),
